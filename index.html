@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>Long Layout (1920 x 5400)</title>
+  <meta name="viewport" content="width=device-width" />
+
+  <style>
+    /* 기본 캔버스 */
+    body { 
+
+      margin:0; 
+      background:#AEFF00; 
+      display:flex; 
+      justify-content:center; 
+    }
+    .canvas {
+      position: relative;
+      width: 1920px;
+      height: 5400px; /* 1080 * 5 */
+      overflow: visible;
+    }
+    .canvas img { position:absolute; object-fit:contain; user-select:none; -webkit-user-drag:none; }
+
+    
+
+    /* ===== main page ===== */
+    #title { left:30px; top:5px; width:1300px; height:350px; z-index:60; }
+
+
+    #cypuppy { left:750px; top:300px; width:170px; height:170px; z-index:60; }
+    #gyaru { left:130px; top:400px; width:160px; height:100px; z-index:60; }
+    #citizen5{ left:400px; top:400px; width:90px; height:90px; z-index:60; }
+
+
+    #santa { left:50px; top:600px; width:300px; height:300px; z-index:65;cursor: pointer; 
+    }
+
+    .rainbow {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, violet);
+      mix-blend-mode: screen;
+      opacity: 0.6;
+      animation: flash 0.5s ease-out;
+      pointer-events: none; /* 클릭 막히는 거 방지 */
+      z-index: 9999;
+    }
+    @keyframes flash {
+      from { opacity: 0.8; }
+      to   { opacity: 0;   }
+    }
+
+
+    #Rilakkuma { left:490px; top:500px; width:180px; height:180px; z-index:60;  cursor: pointer;transition: all 0.3s;}
+    #citizen1{ left:800px; top:650px; width:300px; height:300px; z-index:60; cursor: pointer; }
+    #Cyworld { left:620px; top:500px; width:90px; height:160px; z-index:60; }
+
+
+    /* haduri */
+    #HaduriCam { left:920px; top:380px; width:140px; height:100px; z-index:60;cursor:pointer; }
+    .cam-popup {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  height: 270px;
+  border: 4px solid white;
+  background: black;
+  z-index: 9999;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.cam-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  /* 뽀샤시 효과 유지, 파란끼 제거 */
+  filter: brightness(1.5) contrast(1.2) saturate(1.1) blur(1.5px);
+}
+
+.cam-noise {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://i.imgur.com/4AiXzf8.png') repeat;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cam-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 3px;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 4;
+}
+
+/* 제목 이미지 공간 */
+.cam-title {
+  position: absolute;
+  top: 5px;
+  border-left: 10px; /* 닫기 버튼과 겹치지 않게 */
+  height: 40px;
+  width: 100;
+  z-index: 4;
+}
+ /* haduri */
+
+
+
+
+
+    #rhythm { left:1280px; top:77px; width:300px; height:100px; z-index:60; }
+    #citizen4{ left:1500px; top:250px; width:120px; height:120px; z-index:60; }
+    #citizen2{ left:1300px; top:350px; width:100px; height:100px; z-index:60; cursor: pointer;}
+    #Pricura { left:825px; top:550px; width:70px; height:70px; z-index:60; }
+    #Lotteria { left:320px; top:600px; width:120px; height:100px; z-index:60; }
+    #ReligiousMotifs { left:1160px; top:620px; width:150px; height:150px; z-index:60; }
+
+    #miku1  { left:1750px; top:580px; width:180px; height:180px; z-index:60; cursor: pointer;}
+    @keyframes shake {
+  0% { transform: translate(0px, 0px) rotate(0deg); }
+  20% { transform: translate(-5px, 0px) rotate(-10deg); }
+  40% { transform: translate(5px, 0px) rotate(10deg); }
+  60% { transform: translate(-5px, 0px) rotate(-10deg); }
+  80% { transform: translate(5px, 0px) rotate(10deg); }
+  100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+
+
+
+    #lolitafashion { left:1700px; top:900px; width:180px; height:180px; z-index:60; }
+    #MyMelody { left:1480px; top:850px; width:150px; height:150px; z-index:60; }
+    #undergroundidol { left:1480px; top:700px; width:120px; height:120px; z-index:60; }
+    #citizen3 { left:550px; top:800px; width:130px; height:130px; z-index:60; }
+    #mouse { left:800px; top:700px; width:100px; height:100px; z-index:60; }
+    #Decora { left:100px; top:900px; width:120px; height:140px; z-index:60; }
+    
+
+      .star { width:40px; height:40px; position:absolute; z-index:65; }
+
+
+
+
+    /* ===== 2 ===== */
+    #ad1 { left: 50px;  top: 1150px; width: 280px; height: 90px; z-index:60; }
+    #ad2 { left: 50px; top: 1250px; width: 280px; height: 90px; z-index:60;}
+    #ad3 { left: 50px;  top: 1350px; width: 280px; height: 90px; z-index:60;}
+    #ad4 { left: 50px; top: 1450px; width: 280px; height: 90px; z-index:60;}
+    #ad5 { left: 50px;  top: 1550px; width: 280px; height: 90px; z-index:60;}
+    #ad6 { left: 50px; top: 1650px; width: 280px; height: 90px; z-index:60;}
+    #ad7 { left: 50px;  top: 1750px; width: 280px; height: 90px; z-index:60;}
+
+    #ad8 { left: 300px;  top: 1150px; width: 280px; height: 90px; z-index:60;}
+    #ad9 { left: 300px; top: 1250px; width: 280px; height: 90px; z-index:60;}
+    #collageletter { left: 295px;  top: 1350px; width: 295px; height: 110px; z-index:60;}
+    
+    #Illegalsite { left: 50px; top: 1850px; width: 280px; height: 150px; z-index:60;}
+
+  
+    #Kinder { position: absolute; left: 300px;  top: 1480px; width: 200px; height: 230px; z-index:99;cursor: pointer; transition: left 1.5s ease; }
+    #ID {  left: 350px;  top: 1700px; width: 350px; height: 350px; z-index:5; cursor: pointer;}
+
+   a#backtothefuture-link { display:block; position: absolute; left: 1510px; top: 1320px;
+  width: 130px;height: 130px;z-index:70;}
+a#backtothefuture-link img { width:100%; height:100%; object-fit:contain; cursor:pointer; 
+  display:block;}
+
+
+    #miku {  left: 1550px; top: 1480px; width: 180px; height: 250px; z-index:70;}
+    #redcat {  left: 1760px; top: 1330px; width: 150px; height: 150px; z-index:70; cursor: pointer;}
+       
+
+    #t {  left: 1550px; top: 1130px; width: 400px; height: 1000px; z-index:50;}
+    #tourT {  left: 1480px; top: 1690px; width: 200px; height: 200px; z-index:80;}
+    #computer4 {  left: 1450px; top: 1830px; width: 190px; height: 190px; z-index:80;}
+    #mouth {  left: 1650px; top: 1880px; width: 250px; height: 150px; z-index:80;}
+    #kakaotalk {  left: 1350px; top: 1450px; width: 200px; height: 200px; z-index:60;}
+    #ringring {  left: 1360px; top: 1180px; width: 150px; height: 150px; z-index:65;}
+    #cartoon {  left: 1430px; top: 1180px; width: 350px; height: 350px; z-index:40;}
+    #computer5 {  left: 800px; top: 1100px; width: 300px; height: 260px; z-index:60;}
+    #cy {  left: 600px; top: 1230px; width: 300px; height: 260px; z-index:60;}
+    #icon2 {  left: 800px; top: 1230px; width: 330px; height: 260px; z-index:80;}
+    #icon3 {  left: 500px; top: 1330px; width: 150px; height: 150px; z-index:70; cursor: pointer;}
+
+    #whitecat {  left: 1150px; top: 1350px; width: 220px; height: 220px; z-index:90;}
+    #sweet {  left: 1150px; top: 1450px; width: 220px; height: 220px; z-index:95;}
+    #suitcase {  left: 900px; top: 1410px; width: 180px; height: 180px; z-index:80;}
+
+
+    #puppy3 {  left: 1100px; top: 1150px; width: 200px; height: 140px; z-index:65;}
+    #lovemiku {  left: 1050px; top: 1210px; width: 300px; height: 260px; z-index:62;}
+    #test {  left: 480px;  top: 1470px; width: 200px; height: 200px; z-index:60;}
+    #computer6 {  left: 600px;  top: 1430px; width: 400px; height: 200px; z-index:40;}
+    #Chrome {  left: 650px;  top: 1530px; width: 200px; height: 250px; z-index:90;}
+    #computer3 {  left: 750px;  top: 1630px; width: 250px; height: 250px; z-index:85;}
+    #computer2 {  left: 850px;  top: 1730px; width: 200px; height: 200px; z-index:85;cursor: pointer;}
+    #computer1 {  left: 680px;  top: 1830px; width: 200px; height: 200px; z-index:85;  cursor: pointer;}
+    @keyframes msgFade {
+  0%   { opacity: 1; transform: translateY(0) rotate(0deg); }
+  25%  { transform: translateY(-5px) rotate(-5deg); }
+  50%  { transform: translateY(-10px) rotate(5deg); }
+  75%  { transform: translateY(-15px) rotate(-3deg); }
+  100% { opacity: 0; transform: translateY(-20px) rotate(0deg); }
+}
+.msg {
+  position: absolute;
+  font-size: 14px;
+  font-weight: bold;
+  pointer-events: none;
+  animation: msgFade 1.2s forwards;
+}
+
+
+
+    #wedg2000 {  left: 900px;  top: 1530px; width: 300px; height: 200px; z-index:50;}
+    #MediaFormatParody {  left: 1080px;  top: 1700px; width: 500px; height: 350px; z-index:60;}
+    
+
+   /* ===== 3 ===== */
+#sunnyframe { left: 1530px; top: 2080px; width: 400px; height: 400px; z-index:60;}
+#sunny { left: 1620px; top: 2180px; width: 220px; height: 200px; z-index:50;}
+
+#stationerystoreframe { left: 1570px; top: 2500px; width: 300px; height: 300px; z-index:60;}
+#stationerystore { left: 1600px; top: 2530px; width: 240px; height: 240px; z-index:50;}
+#lucky { left:1500px;  top: 2380px; width: 250px; height: 250px; z-index:70; transform: rotate(-20deg);}
+
+#balletcoreframe { left: 1143px; top: 2090px; width: 395px; height: 410px; z-index:60;}
+#balletcore { left: 1143px; top: 2090px; width: 395px; height: 410px; z-index:50;}
+
+#handmadeframe { left: 1135px; top: 2500px; width: 395px; height: 410px; z-index:60;}
+#handmade { left: 1152px; top: 2550px; width: 350px; height: 300px; z-index:50;}
+
+#particles { left: 550px;   top: 2110px; width: 280px; height: 180px; z-index:80}
+#angelcore { left: 300px;   top: 2000px; width: 300px; height: 300px; z-index:90;}
+#Dachshund { left: 550px;   top: 2125px; width: 280px; height: 180px; z-index:70;}
+
+
+/* honeyclover */
+#HoneyClover { left: 55px;   top: 2135px; width: 300px; height: 300px; z-index:50; cursor:pointer;}
+#naturalframe { left: 34px;   top: 2110px; width: 341px; height: 360px; z-index:60; cursor:pointer;}
+
+
+#iphone6s { left: 375px;   top: 2250px; width: 150px; height: 250px; z-index:40;}
+
+a#nintendoDs-link { display:block; position:absolute; left: 830px;  top: 2110px; width: 294px; height: 138px; z-index:60; }
+a#nintendoDs-link img { width:100%; height:100%; object-fit:contain; cursor:pointer; display:block; }
+
+
+
+#sesframe { left: 830px;  top: 2260px; width: 294px; height: 240px; z-index:60;}
+#SES { left: 830px;  top: 2260px; width: 294px; height: 240px; z-index:50;}
+#blueheart { left: 980px;  top: 2200px; width: 250px; height: 250px; z-index:70; transform: rotate(-20deg);}
+#angels { left: 1300px;  top: 2050px; width: 250px; height: 250px; z-index:70; transform: rotate(20deg);}
+
+#Dreamcore{ left: -35px;   top: 2350px; width: 500px; height: 500px; z-index:60;}
+#TeacupPuppy{ left: 15px;   top: 2700px; width: 300px; height: 300px; z-index:80;}
+#Characterchange { left: 155px;   top: 2715px; width: 250px; height: 200px; z-index:50;}
+#cubic{ left: 1500px;   top: 2750px; width: 130px; height: 130px; z-index:80;}
+#keyring{ left: 1450px;   top: 2550px; width: 170px; height: 220px; z-index:90;}
+
+
+/* ditto */
+#newjeans{ left: 525px;  top: 2280px; width: 295px; height: 238px; z-index:60;cursor:pointer;}
+#Ditto{ left: 535px;  top: 2280px; width: 270px; height: 238px; z-index:50;cursor:pointer;}
+
+
+#wishframe{ left: 850px;  top: 2520px; width: 268px; height: 262px; z-index:60;}
+#wish{ left: 870px;  top: 2535px; width: 230px; height: 230px; z-index:50;}
+#student{ left: 950px;  top: 2700px; width: 280px; height: 290px; z-index:80;}
+#dragonfly{ left: 800px;  top: 2700px; width: 268px; height: 262px; z-index:70;}
+
+#goldframe { left: 429px;  top: 2530px; width: 405px; height: 325px; z-index:60;}
+#bigpuppy { left: 450px;  top: 2530px; width: 385px; height: 300px; z-index:50; }
+
+
+    /* ===== 4 ===== */
+#rainbowR { left:1000px; top:3030px; width:920px;  height:600px; z-index:10; }
+#rainbowL { left:0px; top:3030px; width:920px;  height:600px; z-index:10; transform: scaleX(-1);}
+
+#roseL { left:580px; top:3130px; width:250px; height:250px; z-index:34; }
+#roseR { left:1100px; top:3130px; width:250px; height:250px; z-index:34; transform: scaleX(-1); }
+#rainbowflowerL { left:500px; top:3080px; width:150px; height:150px; z-index:30; }
+#rainbowflowerR { left:1280px; top:3080px; width:150px; height:150px; z-index:30;}
+#morninggloryL { left:360px; top:3080px; width:150px; height:150px; z-index:30; }
+#morninggloryR { left:1410px; top:3080px; width:150px; height:150px; z-index:30;}
+#bluedragonL { left:1000px; top:3230px; width:200px; height:250px; z-index:10; }
+#bluedragonR { left:500px; top:3230px; width:200px; height:250px; z-index:10;}
+
+#goldroseL { left:350px; top:3280px; width:180px; height:150px; z-index:34; transform: scaleX(-1);}
+#goldroseR { left:1360px; top:3280px; width:180px; height:150px; z-index:34;}
+#hwahwanL { left:180px; top:3180px; width:200px; height:200px; z-index:34; transform: scaleX(-1);}
+#hwahwanR { left:1530px; top:3180px; width:200px; height:200px; z-index:34;}
+#heartdecoL { left:3px; top:3080px; width:200px; height:400px; z-index:34;}
+#heartdecoR { left:1707px; top:3080px; width:200px; height:400px; z-index:34; transform: scaleX(-1);}
+
+#bluedragonL { left:730px; top:3380px; width:250px; height:200px; z-index:10; transform: scaleX(-1);}
+#bluedragonR { left:950px; top:3380px; width:250px; height:200px; z-index:10; }
+
+#bluelight { left:784px; top:3830px; width:350px; height:350px; z-index:30; }
+
+#fallingflowers  { left:715px; top:3110px; width:500px; height:300px; z-index:25; }
+#fallingflowersL { left:100px; top:3100px; width:280px; height:280px; z-index:33; }
+#fallingflowersR { left:1500px; top:3100px; width:280px; height:280px; z-index:33; }
+#topvineL { left:300px; top:2930px; width:500px; height:150px; z-index:33; }
+#topvineR { left:1120px; top:2930px; width:500px; height:150px; z-index:33; }
+#redroseL { left:50px; top:2980px; width:200px; height:200px; z-index:33; }
+#redroseR { left:1650px; top:2980px; width:200px; height:200px; z-index:33; }
+
+#midsommar { left:725px; top:2980px; width:500px; height:300px; z-index:30; transform: scaleY(-1);}
+#china { left:825px; top:3100px; width:280px; height:280px; z-index:33; }
+#animeGirl { left:875px; top:3280px; width:180px; height:180px; z-index:30; }
+#fountain { left:690px; top:3380px; width:550px; height:550px; z-index:15; }
+
+#Underwater { left:0px; top:3380px; width:2000px; height:1800px; z-index:10; }
+#Underwater2 { left:970px; top:3380px; width:2000px; height:1800px; z-index:10; transform: scaleX(-1); }
+
+#waterflower { left:690px; top:3430px; width:550px; height:600px; z-index:16; }
+#grass1 { left:465px; top:3230px; width:1000px; height:800px; z-index:5; }
+
+#scissors { left:600px; top:3530px; width:150px; height:150px; z-index:50; transform: rotate(20deg);}
+#RyuSungsil { left:300px; top:3450px; width:350px; height:350px; z-index:50; }
+#couple { left:1350px; top:3450px; width:350px; height:350px; z-index:25; cursor: pointer;}
+
+
+#wolf { left:40px; top:3530px; width:300px; height:250px; z-index:25; }
+#fish2 { left:0px; top:3830px; width:400px; height:400px; z-index:22; }
+#mosquito { left:50px; top:3680px; width:200px; height:200px; z-index:30; }
+
+#lotusflowersR { left:50px; top:3680px; width:300px; height:400px; z-index:20;}
+#lotusflowersL { left:1550px; top:3680px; width:300px; height:400px; z-index:20; transform: scaleX(-1);}
+#lotusflowerR { left:400px; top:3680px; width:400px; height:300px; z-index:40;}
+#lotusflowerL { left:1110px; top:3680px; width:400px; height:300px; z-index:40; transform: scaleX(-1);}
+#rainbowfish { left:1110px; top:3580px; width:200px; height:200px; z-index:35;}
+
+#apple { left:1520px; top:3710px; width:150px; height:150px; z-index:30;}
+
+#FrutigerAero { left:615px; top:3910px; width:180px; height:180px; z-index:30; }
+#fish1 { left:500px; top:3980px; width:180px; height:180px; z-index:26; }
+#dog { left:545px; top:3915px; width:130px; height:130px; z-index:24; }
+
+a#bluegirl-link { display: block; position: absolute;left: 1500px;top: 3850px;width: 200px; height: 280px; z-index: 22;}
+
+a#bluegirl-link img {width: 100%;height: 100%;object-fit: contain; cursor: pointer;display: block;}
+
+#dolphin { left:1700px; top:4030px; width:150px; height:100px; z-index:20; }
+#angelfish { left:1680px; top:4130px; width:200px; height:150px; z-index:20; }
+#bluerose { left:1300px; top:3830px; width:200px; height:200px; z-index:22; }
+
+/* ===== 5 ===== */
+#heart { left:90px; top:3900px; width:200px; height:200px; z-index:51; transform: rotate(-20deg);}
+#dirtycore { left:110px; top:4040px; width:380px; height:270px; z-index:50; }
+#co { left:198px; top:4180px; width:200px; height:200px; z-index:50; }
+#frame { left:90px; top:3990px; width:400px; height:400px; z-index:50; }
+#spider { left:160px; top:3960px; width:450px; height:420px; z-index:55; }
+
+#rose { left:610px; top:4180px; width:690px; height:590px; z-index:66; }
+#wings { left:415px; top:3860px; width:1090px; height:990px; z-index:65; }
+#red { left:705px; top:4280px; width:500px; height:500px; z-index:67; }
+#ank { left:860px; top:4400px; width:190px; height:50px; z-index:72; }
+#nana { left:860px; top:4480px; width:190px; height:120px; z-index:65; }
+#nana2 { left:860px; top:4580px; width:190px; height:120px; z-index:65; }
+
+#subculture { left:400px; top:4380px; width:140px; height:120px; z-index:50; }
+#dragon { left:85px; top:4290px; width:270px; height:200px; z-index:50; }
+#gta { left:220px; top:4420px; width:160px; height:140px; z-index:48; }
+#cyber { left:370px; top:4480px; width:160px; height:140px; z-index:10; }
+#xg { left:230px; top:4480px; width:110px; height:150px; z-index:50; }
+
+#indie { left:80px; top:4680px; width:220px; height:160px; z-index:52; }
+#indie2 { left:200px; top:4680px; width:120px; height:100px; z-index:52; }
+#fire { left:80px; top:4780px; width:300px; height:100px; z-index:55; }
+#dancers { left:130px; top:4560px; width:160px; height:110px; z-index:53; }
+
+
+  #green {
+    position: absolute;   /* 필수 */
+    left: 400px;
+    top: 4660px;
+    width: 200px;
+    height: 200px;
+    z-index: 90;
+    cursor: pointer;      /* 클릭 가능 표시 */
+    transition: left 1s ease; /* 부드럽게 이동 */
+  }
+
+#ufo { left:370px; top:4780px; width:280px; height:220px; z-index:50; }
+
+#band { left:600px; top:4730px; width:180px; height:250px; z-index:40; }
+#band2 { left:730px; top:4830px; width:190px; height:150px; z-index:40; }
+#skeleton { left:640px; top:4680px; width:250px; height:300px; z-index:39; }
+
+a#monster-link { display:block; position:absolute; left:900px; top:4760px; width:120px; height:170px; z-index:65; }
+a#monster-link img { width:100%; height:100%; object-fit:contain; cursor:pointer; display:block; }
+
+#pinkrabbit { left:1200px; top:4780px; width:130px; height:160px; z-index:85; }
+#fire2 { left:1000px; top:4380px; width:500px; height:600px; z-index:80; }
+#bus_skel { left:1200px; top:4430px; width:380px; height:480px; z-index:42; }
+#ziral_skel { left:1400px; top:4780px; width:150px; height:180px; z-index:42; }
+
+
+a#goth-link { display:block; position:absolute; left:720px; top:4080px; width:260px; height:200px; z-index:64;  }
+a#goth-link img { width:100%; height:100%; object-fit:contain; cursor:pointer; display:block; }
+
+
+#book { left:900px; top:4130px; width:200px; height:130px; z-index:99; }
+
+#ito { left:1500px; top:4120px; width:200px; height:250px; z-index:55; }
+#eyeball { left:1590px; top:4205px; width:45px; height:45px; z-index:99; }
+#bone1 { left:1260px; top:4060px; width:360px; height:290px; z-index:90; }
+#bone2 { left:1460px; top:4270px; width:260px; height:190px; z-index:90; }
+#timburton { left:1480px; top:4330px; width:170px; height:350px; z-index:91; }
+
+#red_girl { left:1700px; top:4480px; width:170px; height:150px; z-index:50; }
+#love { left:1700px; top:4490px; width:170px; height:150px; z-index:51; }
+#yourock { left:1500px; top:4580px; width:300px; height:340px; z-index:52; transform: rotate(20deg);}
+#black_girl { left:1750px; top:4320px; width:150px; height:220px; z-index:56; }
+#bat { left:260px; top:4420px; width:400px; height:400px; z-index:20; }
+#bat2 { left:1400px; top:4420px; width:400px; height:400px; z-index:20; }
+#bat3 { left:1000px; top:3980px; width:400px; height:400px; z-index:20; }
+
+
+    .draggableHint { outline: 1px dashed rgba(255,255,255,0.06); }
+
+
+    /* 전체 배경 색 영역 */
+.background-color0 {
+  top: 0;
+  position: absolute;     /* section0 위치 */
+  width: 100%;
+  height: 1080px;    /* section0 높이 */
+  background: 
+    url("https://i.imgur.com/ZIa2QGm.png"); /* 이미지 경로 */
+  background-size: cover;   /* 이미지가 꽉 차게 */
+  background-position: center; /* 가운데 정렬 */
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+
+.background-color1 {
+  position: absolute;
+  top: 1080px;        /* section1 위치 */
+  width: 100%;
+  height: 1080px;     /* 한 섹션 높이 */
+  background-size: cover;   /* 이미지 꽉 차게 */
+  background-position: center; /* 가운데 정렬 */
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+
+.background-color2 {
+  position: absolute;
+  top: 1080px;       /* section2 위치 */
+  width: 100%;
+  height: 1080px;
+  background:linear-gradient(to bottom,#AEFF00,hotpink);
+  z-index: 0;
+}
+
+.background-color3 {
+  position: absolute;
+  top: 2160px;       /* section3 위치 */
+  width: 100%;
+  height: 1080px;
+  background: linear-gradient(to bottom,hotpink,#5CFFD1);
+  z-index: 0;
+}
+
+.background-color4 {
+  position: absolute;
+  top: 3240px;       /* section4 위치 */
+  width: 100%;
+  height: 1080px;
+  background: linear-gradient(to bottom, #5CFFD1, blue);
+  z-index: 0;
+}
+
+.background-color5 {
+  position: absolute;
+  top: 4320px;       /* section5 위치 */
+  width: 100%;
+  height: 1080px;
+  background: linear-gradient(to bottom, blue, black);
+  z-index: 0;
+}
+img#Underwater, 
+  img#Underwater2 {
+  position: absolute;
+  width: 950px;
+  height: 800px;
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 50%, black 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-image: linear-gradient(to top, transparent 0%, black 50%, black 100%);
+  mask-repeat: no-repeat;
+  mask-size: cover;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+
+  <div id="bottomText" style="
+    position: fixed;       /* 화면 기준으로 고정 */
+    bottom: 0;             /* 화면 맨 아래 */
+    left: 50%;             /* 수평 중앙 */
+    transform: translateX(-50%); /* 중앙 정렬 */
+    color: glay;          /* 흰색 글씨 */
+    font-size: 12px;       /* 작게 */
+    text-align: center;
+    padding: 5px 10px;     /* 상하 5px, 좌우 10px 여백 */
+    background-color: #AEFF00; /* 연두색 배경 */
+    border-radius: 4px;    /* 살짝 둥글게 */
+    z-index: 9999;         /* 다른 요소 위로 */
+    pointer-events: none;  /* 클릭 등 영향 없음 */
+">
+    Click on any icon!
+</div>
+<!-- 페이지의 최상위 wrapper가 필요할 경우 -->
+<div id="pageWrapper" style="position: relative;">
+
+<div id="pageBottomText" style="
+    position: absolute;
+    bottom: 160px;                /* 아래에서 살짝 띄움 */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #000000;              /* 글씨 색: 검정 */
+    font-size: 18px;             /* 글씨 조금 키움 */
+    line-height: 1.3;            /* 줄간격 */
+    text-align: center;
+    padding: 10px 15px;          /* 여백 키움 */
+    background-color: rgba(255, 255, 255, 0.5); /* 흰색 + 투명도 0.7 */
+    border-radius: 6px;
+    z-index: 100;                /* 다른 요소 위로 */
+">
+    This website is a sensory archiving project created in 2025 by Kim Byul and Kim Ju eun, students of the Class of 2023 at Kaywon University of Art and Design. It features a total of 50 distinct senses, allowing visitors to click on each icon and directly experience visual and auditory sensations. Over the course of approximately two months, we went through numerous trials to design intuitive interactions and an engaging user experience. Through this website, we aim to propose a new way of recording and sharing sensory experiences.
+</div>
+
+
+  <div class="canvas">
+  <!-- main page -->
+  <img id="title" src="https://i.imgur.com/lBs9v2M.png[" alt="title" style="position:absolute;">
+
+  <img id="santa" src="https://imgur.com/jVd0rew.gif" alt="santa" style="position:absolute;">
+  <img id="citizen5" src="https://i.imgur.com/y5vSofy.gif" alt="citizen5" style="position:absolute;">
+
+  <img id="Rilakkuma" src="https://i.imgur.com/wriw3bd.gif" alt="Rilakkuma" style="position:absolute;"> 
+  <img id="citizen1" src="https://imgur.com/UKFs1vW.gif" alt="citizen1" style="position:absolute;">
+  <img id="gyaru" src="https://i.imgur.com/TFRYZ77.gif" alt="gyaru" style="position:absolute;">
+   <img id="cypuppy" src="https://i.imgur.com/PeGV8pC.gif" alt="cypuppy" style="position:absolute;">
+  <img id="Cyworld" src="https://i.imgur.com/X5yIirc.png" alt="Cyworld" style="position:absolute;">
+
+  <img id="HaduriCam" src="https://i.imgur.com/clZXetY.gif" alt="HaduriCam" style="position:absolute;">
+  <img id="rhythm" src="https://i.imgur.com/xxvSQqm.gif" alt="rhythm" style="position:absolute;">
+  <img id="citizen4" src="https://i.imgur.com/kw1qWQU.gif" alt="citizen4" style="position:absolute;">
+  <img id="citizen2" src="https://i.imgur.com/d4OYXhf.gif" alt="citizen2" style="position:absolute;">
+  <img id="Pricura" src="https://i.imgur.com/3B8lUDq.gif" alt="Pricura" style="position:absolute;">
+  <img id="lolitafashion" src="https://i.imgur.com/7iD8Kcn.gif" alt="Lotteria" style="position:absolute;">
+  <img id="ReligiousMotifs" src="https://i.imgur.com/pKCYUpD.gif" alt="ReligiousMotifs" style="position:absolute;">
+  <img id="miku1" src="https://imgur.com/OShgjNY.gif" alt="miku1" style="position:absolute;">
+   <img id="Lotteria" src="https://imgur.com/DqATfZB.gif" alt="lolitafashion" style="position:absolute;">
+    <img id="MyMelody" src="https://i.imgur.com/hRNQH8m.gif" alt="MyMelody" style="position:absolute;">
+  <img id="undergroundidol" src="https://imgur.com/XMZRNZR.gif" alt="undergroundidol" style="position:absolute;">
+  <img id="citizen3" src="https://i.imgur.com/8W9o9DY.gif" alt="citizen3" style="position:absolute;">
+  <img id="mouse" src="https://i.imgur.com/MYTOyha.gif" alt="mouse" style="position:absolute;">
+  <img id="Decora" src="https://i.imgur.com/8Qr55Vr.gif" alt="Decora" style="position:absolute;">
+  
+  <img class="star" src="https://i.imgur.com/IyDWlle.png" style="left:300px; top:220px;">
+  <img class="star" src="https://i.imgur.com/IyDWlle.png" style="left:1280px; top:260px;">
+  <img class="star" src="https://i.imgur.com/IyDWlle.png" style="left:880px; top:460px;">
+  <img class="star" src="https://i.imgur.com/IyDWlle.png" style="left:1550px; top:580px;">
+  <img class="star" src="https://i.imgur.com/IyDWlle.png" style="left:500px; top:720px;">
+  <img class="star" src="https://i.imgur.com/IyDWlle.png" style="left:1420px; top:840px;">
+
+
+
+
+
+  <!-- page 2 -->
+  <img id="ad1" src="https://i.imgur.com/AOonKwC.gif" alt="ad1">
+  <img id="ad2" src="https://i.imgur.com/5aeXHYR.gif" alt="ad2">
+  <img id="ad3" src="https://i.imgur.com/TfW5ltj.gif" alt="ad3">
+  <img id="ad4" src="https://i.imgur.com/4HkCwcO.gif" alt="ad4">
+  <img id="ad5" src="https://imgur.com/0GFxoTr.gif" alt="ad5">
+  <img id="ad6" src="https://i.imgur.com/HjKFni9.gif" alt="ad6">
+  <img id="ad7" src="https://imgur.com/ovQVnSi.gif" alt="ad7">
+  <img id="Illegalsite" src="https://i.imgur.com/KrRtuvm.jpeg" alt="Illegalsite">
+
+  <img id="ad8" src="https://i.imgur.com/S9To0Pu.gif" alt="ad8">
+  <img id="ad9" src="https://i.imgur.com/YJ5pjSd.jpeg" alt="ad9">
+  <img id="collageletter" src="https://i.imgur.com/L7r6sOz.jpeg" alt="collageletter">
+
+  <img id="Kinder" src="https://imgur.com/jrt7r5Z.gif" alt="Kinder">
+  <img id="ID" src="https://i.imgur.com/5om1tu0.jpeg" alt="ID">
+
+  <img id="test" src="https://imgur.com/G3DL11A.gif" alt="test">
+
+ <a id="backtothefuture-link" href="https://qufdl00.github.io/bttf3/" title="Go to backtothefuture"><img src="https://i.imgur.com/ix0qgZ0.png" alt="backtothefuture">
+</a>
+
+
+  <img id="kakaotalk" src="https://imgur.com/fWLCkOR.gif" alt="kakaotalk">
+
+  <img id="puppy3" src="https://i.imgur.com/fb9ykkQ.gif" alt="puppy3">
+  <img id="redcat" src="https://imgur.com/81Uj8rk.gif" alt="redcat">
+  <img id="miku" src="https://imgur.com/t27ah0K.gif" alt="miku">
+  <img id="t" src="https://imgur.com/uTz8pkQ.gif" alt="t">
+  <img id="tourT" src="https://i.imgur.com/9TknBoP.gif" alt="tourT">
+  <img id="computer4" src="https://imgur.com/3iJ7qCJ.gif" alt="computer4">
+  <img id="mouth" src="https://i.imgur.com/z98H7Dl.gif" alt="mouth">
+  <img id="ringring" src="https://imgur.com/o44Lss0.gif" alt="ringring">
+  <img id="cartoon" src="https://i.imgur.com/KMZ7i0f.gif" alt="cartoon">
+  <img id="lovemiku" src="https://imgur.com/maI9ORX.gif" alt="lovemiku">
+  <img id="computer5" src="https://imgur.com/PbYV0Vm.gif" alt="computer5">
+  <img id="cy" src="https://i.imgur.com/t9js7JA.gif" alt="cy">
+  <img id="icon2" src="https://imgur.com/WDgKlf3.gif" alt="icon2">
+  <img id="icon3" src="https://imgur.com/4GCcMZB.gif" alt="icon3">
+  <img id="suitcase" src="https://imgur.com/26KvKIt.png" alt="suitcase">
+  <img id="whitecat" src="https://imgur.com/SH2vLaD.gif" alt="whitecat">
+  <img id="sweet" src="https://imgur.com/FHJu4JE.gif" alt="sweet">
+
+  <img id="computer6" src="https://imgur.com/WVOUwYn.gif" alt="computer6">
+  <img id="Chrome" src="https://i.imgur.com/bpanDei.gif" alt="Chrome">
+  <img id="computer3" src="https://imgur.com/jqycXo2.gif" alt="computer3">
+  <img id="computer2" src="https://imgur.com/n7xUc69.gif" alt="computer2">
+  <img id="computer1" src="https://imgur.com/26eWWad.gif" alt="computer1">
+  <img id="wedg2000" src="https://imgur.com/JtDyJ2v.gif" alt="wedg2000">
+  <img id="MediaFormatParody" src="https://imgur.com/tUfEYNl.jpg" alt="MediaFormatParody">
+
+
+
+  <!-- page 3 -->
+  <img id="sunnyframe" src="https://imgur.com/UBuHsJg.gif" alt="sunnyframe">
+  <img id="sunny" src="https://imgur.com/pfwfpM1.jpg" alt="sunny">
+
+  <img id="balletcoreframe" src="https://i.imgur.com/gUUUaNq.gif" alt="balletcoreframe">
+  <img id="balletcore" src="https://imgur.com/ZCIFTaW.gif" alt="balletcore">
+
+  <img id="lucky" src="https://i.imgur.com/H9zSSI7.gif" alt="lucky">
+  <img id="stationerystoreframe" src="https://i.imgur.com/qtlQxvc.gif" alt="stationerystoreframe">
+  <img id="stationerystore" src="https://imgur.com/OGaIicI.gif" alt="stationerystore">
+
+  <img id="handmadeframe" src="https://imgur.com/k0n86SF.gif" alt="handmadeframe">
+  <img id="handmade" src="https://i.imgur.com/lyTG7wo.gif" alt="handmade">
+  
+  <img id="particles" src="https://imgur.com/Pep1mZP.gif" alt="particles">
+  <img id="angelcore" src="https://imgur.com/YDQPktK.gif" alt="angelcore">
+  <img id="Dachshund" src="https://imgur.com/fYuTyy8.gif" alt="Dachshund">
+  <img id="naturalframe" src="https://imgur.com/2wTNcdm.gif" alt="naturalframe">
+  <img id="HoneyClover" src="https://imgur.com/zwSwmKC.jpg" alt="HoneyClover">
+  <img id="iphone6s" src="https://imgur.com/Vkadsjy.png" alt="iphone6s">
+
+
+   <a id="nintendoDs-link" href="https://kimwtf.github.io/kimwtf-Nintendo-DS/" title="Go to nintendoDs"><img src="https://i.imgur.com/NsupNp0.gif" alt="nintendoDs">
+</a>
+
+  <img id="SES" src="https://imgur.com/xOQKniC.jpg" alt="SES">
+  <img id="sesframe" src="https://i.imgur.com/f79iRPA.gif" alt="sesframe">
+  <img id="blueheart" src="https://imgur.com/60DogTl.gif" alt="blueheart">
+  <img id="angels" src="https://i.imgur.com/HFRcHAP.gif" alt="angels">
+
+  <img id="Dreamcore" src="https://imgur.com/mZ4oLen.gif" alt="Dreamcore">
+  <img id="TeacupPuppy" src="https://imgur.com/MvnTjU7.gif" alt="TeacupPuppy">
+  <img id="Characterchange" src="https://imgur.com/j5LwWvB.jpg" alt="Characterchange">
+  <img id="keyring" src="https://imgur.com/cR7Xhlf.png" alt="keyring">
+  <img id="cubic" src="https://imgur.com/ePwUTHN.png" alt="cubic">
+  <img id="newjeans" src="https://imgur.com/rEo0fkz.png" alt="newjeans">
+  <img id="Ditto" src="https://imgur.com/dwPO67z.jpg" alt="Ditto">
+
+
+  <img id="wishframe" src="https://i.imgur.com/3VNyZAL.gif" alt="wishframe">
+  <img id="wish" src="https://imgur.com/rplrf3n.jpg" alt="wish">
+  <img id="student" src="https://imgur.com/aTIVWAr.gif" alt="student">
+  <img id="dragonfly" src="https://imgur.com/JIOlx7t.gif" alt="dragonfly">
+
+  <img id="goldframe" src="https://imgur.com/Jqa7Hnu.gif" alt="goldframe">
+  <img id="bigpuppy" src="https://i.imgur.com/CKvOduq.png" alt="bigpuppy">
+
+
+
+    <!-- 4 -->
+    <div class="section0"></div>
+    <img id="rainbowL" src="https://imgur.com/Shg9PB5.png" alt="rainbow left">
+    <img id="rainbowR" src="https://imgur.com/Shg9PB5.png" alt="rainbow right">
+    
+
+    <img id="roseL" src="https://imgur.com/fLBzStm.png" alt="rose left">
+    <img id="roseR" src="https://imgur.com/fLBzStm.png" alt="rose right">
+    <img id="rainbowflowerL" src="https://imgur.com/JDluBRx.gif" alt="rainbowflower left">
+    <img id="rainbowflowerR" src="https://imgur.com/JDluBRx.gif" alt="rainbowflower right">
+    <img id="morninggloryL" src="https://imgur.com/44A0gxw.gif" alt="rmorninggloryleft">
+    <img id="morninggloryR" src="https://imgur.com/44A0gxw.gif" alt="morningglory right">
+    <img id="bluedragonL" src="https://imgur.com/Oaojcc3.png" alt="bluedragon left">
+    <img id="bluedragonR" src="https://imgur.com/Oaojcc3.png" alt="bluedragon right">
+
+    <img id="goldroseR" src="https://imgur.com/4VMP4eT.gif" alt="goldrose right">
+    <img id="goldroseL" src="https://imgur.com/4VMP4eT.gif" alt="goldrose left">
+    <img id="hwahwanR" src="https://i.imgur.com/QNmwAEs.png" alt="hwahwan right">
+    <img id="hwahwanL" src="https://i.imgur.com/QNmwAEs.png" alt="hwahwan left">
+    <img id="heartdecoR" src="https://imgur.com/pMAonUX.png" alt="heartdeco right">
+    <img id="heartdecoL" src="https://imgur.com/pMAonUX.png" alt="heartdeco left">
+
+    <img id="bluelight" src="https://i.imgur.com/l5p2626.png" alt="bluelight">
+
+     <img id="fallingflowers" src="https://imgur.com/3fBHVix.gif" alt="fallingflowers">
+    <img id="fallingflowersR" src="https://imgur.com/3fBHVix.gif" alt="fallingflowers right">
+    <img id="fallingflowersL" src="https://imgur.com/3fBHVix.gif" alt="fallingflowers left">
+    <img id="topvineL" src="https://imgur.com/wOecucY.gif" alt="topvine left">
+    <img id="topvineR" src="https://imgur.com/wOecucY.gif" alt="topvine right">
+    <img id="redroseR" src="https://imgur.com/FTdpkiP.gif" alt="redrose right">
+    <img id="redroseL" src="https://imgur.com/FTdpkiP.gif" alt="redrose left">
+
+
+    <img id="midsommar" src="https://imgur.com/tjYBheE.gif" alt="midsommar">
+    <img id="china" src="https://i.imgur.com/c1J2weT.gif" alt="china">
+    <img id="animeGirl" src="https://i.imgur.com/N5ePkMl.gif" alt="animeGirl">
+    <img id="fountain" src="https://i.imgur.com/FkWQ1rJ.png" alt="fountain">
+    <img id="Underwater" src="https://i.imgur.com/cWo9lBP.png" alt="Underwater">
+    <img id="Underwater2" src="https://i.imgur.com/cWo9lBP.png" alt="Underwater2">
+    <img id="waterflower" src="https://i.imgur.com/CRRL4n9.gif" alt="waterflower">
+    <img id="grass1" src="https://i.imgur.com/OHw156g.png" alt="grass1">
+    <img id="scissors" src="https://imgur.com/PZ0hzbx.png" alt="scissors">
+    <img id="RyuSungsil" src="https://i.imgur.com/kUAqYsn.gif" alt="RyuSungsil">
+    <img id="couple" src="https://imgur.com/j84eovw.gif" alt="couple">
+    <img id="wolf" src="https://imgur.com/egIEB81.gif" alt="wolf">
+    <img id="mosquito" src="https://imgur.com/xTUbi7Y.gif" alt="mosquito">
+
+    <img id="lotusflowersR" src="https://imgur.com/lr9T778.gif" alt="lotusflowers left">
+    <img id="lotusflowersL" src="https://imgur.com/lr9T778.gif" alt="lotusflowe right">
+    <img id="lotusflowerR" src="https://imgur.com/0bG866e.gif" alt="lotusflower left">
+    <img id="lotusflowerL" src="https://imgur.com/0bG866e.gif" alt="lotusflower right">
+    <img id="rainbowfish" src="https://imgur.com/TnkKgGB.gif" alt="rainbowfish">
+   
+
+ <a id="bluegirl-link" href=" https://qufdl00.github.io/rpg3/" title="Go to rpg"><img src="https://i.imgur.com/MdxaaCh.gif" alt="bluegirl">
+</a>
+
+
+
+    <img id="dolphin" src="https://imgur.com/y0pyNz6.jpg" alt="dolphin">
+    <img id="angelfish" src="https://i.imgur.com/mwvUCVf.gif" alt="angelfish">
+    <img id="bluerose" src="https://i.imgur.com/dfgbZQe.gif" alt="bluerose">
+
+    <img id="FrutigerAero" src="https://imgur.com/FAUM8vW.gif" alt="FrutigerAero">
+    <img id="fish1" src="https://imgur.com/mI5Rnca.gif" alt="fish1">
+    <img id="dog" src="https://imgur.com/cYdwGT1.gif" alt="dog">
+  
+    <img id="apple" src="https://imgur.com/tGCi6K9.gif" alt="apple">
+ 
+
+    
+    <div class="background-color0"></div>
+    <div class="background-color1"></div>
+    <div class="background-color2"></div>
+    <div class="background-color3"></div>
+    <div class="background-color4"></div>
+    <div class="background-color5"></div>
+
+
+    <!-- 5 -->
+    <img id="heart"        src="https://imgur.com/Znh4fju.gif" alt="heart">
+    <img id="dirtycore"    src="https://i.imgur.com/h6AppUD.jpeg" alt="dirtycore">
+    <img id="co"           src="https://imgur.com/SjlVCZB.gif" alt="co">
+    <img id="frame"        src="https://imgur.com/q7lnbFB.gif" alt="frame">
+    <img id="spider"       src="https://imgur.com/VxeI9qR.gif" alt="spider">
+
+    <img id="rose"         src="https://i.imgur.com/1HG7bBJ.gif" alt="rose">
+    <img id="wings"        src="https://imgur.com/znRZ86k.gif" alt="wings">
+    <img id="red"          src="https://i.imgur.com/k91niDb.gif" alt="red">
+    <img id="ank"          src="https://i.imgur.com/EeYIoJt.gif" alt="ank">
+    <img id="nana"         src="https://i.imgur.com/5MKyhvU.gif" alt="nana">
+    <img id="nana2"        src="https://i.imgur.com/gXghs60.jpeg" alt="nana2">
+
+    <img id="subculture"   src="https://i.imgur.com/kqM8ivZ.gif" alt="subculture">
+    <img id="dragon"       src="https://imgur.com/r1i5aGA.gif" alt="dragon">
+    <img id="gta"          src="https://i.imgur.com/6VP1zoB.jpeg" alt="gta">
+    <img id="cyber"        src="https://imgur.com/l6JKKRS.jpg" alt="cyber">
+    <img id="xg"           src="https://imgur.com/tX6KKwY.gif" alt="xg">
+    <img id="indie"        src="https://i.imgur.com/US6frK9.gif" alt="indie">
+    <img id="indie2"       src="https://i.imgur.com/tlJGcmI.gif" alt="indie2">
+    <img id="fire"         src="https://imgur.com/fxMEHP6.gif" alt="fire">
+    <img id="dancers"      src="https://imgur.com/2ds748D.gif" alt="dancers">
+    <img id="green"        src="https://imgur.com/U1GRcwT.gif" alt="green" style="cursor:pointer;">
+    <img id="ufo"          src="https://imgur.com/JWuCRvV.gif" alt="ufo">
+    <img id="band"         src="https://imgur.com/FfQJtUN.gif" alt="band merch">
+    <img id="band2"        src="https://imgur.com/HjZHVIY.gif" alt="band merch2">
+    <img id="skeleton"     src="https://imgur.com/wjdㄱXhJF.gif" alt="skeleton">
+
+    <a id="monster-link" href="https://kimwtf.github.io/Monster-High/" title="Go to Monster High"><img src="https://i.imgur.com/Y9Pscrh.gif" alt="monsterhigh">
+    </a>
+    <img id="pinkrabbit"   src="https://imgur.com/V0F7Xk5.gif" alt="pink rabbit">
+    <img id="fire2"        src="https://imgur.com/zOH7jqW.gif" alt="fire2">
+    <img id="bus_skel"     src="https://imgur.com/CYNNCwg.gif" alt="bus skeleton">
+    <img id="ziral_skel"   src="https://imgur.com/bun0w0C.gif" alt="ziral_skel">
+    <img id="timburton"    src="https://i.imgur.com/EazdCF2.gif" alt="tim burton">
+   
+<a id="goth-link" href="
+https://kimwtf.github.io/gothic-ex/" title="Go to goth"><img src="https://i.imgur.com/0mUbGhc.gif" alt="goth">
+    </a>
+
+    <img id="book"         src="https://i.imgur.com/Ohg633t.gif" alt="book">
+    <img id="ito"          src="https://imgur.com/DWElutM.jpg" alt="ito">
+    <img id="eyeball"      src="https://imgur.com/ntDFBir.gif" alt="eyeball">
+    <img id="bone1"        src="https://imgur.com/usVPCzW.gif" alt="bone1">
+    <img id="bone2"        src="https://imgur.com/usVPCzW.gif" alt="bone2">
+    <img id="red_girl"     src="https://imgur.com/B0GWx6j.gif" alt="red girl">
+    <img id="love"         src="https://imgur.com/CAXalRB.gif" alt= "love">
+    <img id="yourock"      src="https://i.imgur.com/YII8Rqg.gif" alt="yourock">
+    <img id="black_girl"   src="https://i.imgur.com/iHxmYNk.gif" alt="black girl">
+    <img id="bat"          src="https://i.imgur.com/rVXZjCJ.gif" alt="bat">
+    <img id="bat2"         src="https://i.imgur.com/rVXZjCJ.gif" alt="bat2">
+    <img id="bat3"         src="https://i.imgur.com/rVXZjCJ.gif" alt="bat3">
+  </div>
+
+  <!-- HTML -->
+
+
+  <div id="popup"></div>
+<script>
+
+  /* 1 효과 */
+  const santa = document.getElementById("santa");
+    santa.addEventListener("click", (e) => {
+      const flash = document.createElement("div");
+      flash.className = "rainbow";
+      document.body.appendChild(flash);
+
+      // 0.5초 뒤에 제거
+      setTimeout(() => {
+        flash.remove();
+      }, 500);
+    });
+
+
+     const element = document.getElementById("Rilakkuma");
+
+    element.addEventListener("click", () => {
+
+      // 날아오르는 효과
+      element.style.transition = "all 0.8s cubic-bezier(.25,1.5,.5,1)";
+      element.style.transform = `rotate(${Math.random() * 720 - 360}deg) translateY(-800px)`;
+      element.style.opacity = 0;
+
+      // 1초 뒤 원상복귀
+      setTimeout(() => {
+        element.style.transition = "";
+        element.style.transform = "";
+        element.style.opacity = 1;
+      }, 1000);
+    });
+
+
+      const c = document.getElementById("citizen1");
+
+c.addEventListener("click", () => {
+    c.style.transition = "transform 1.2s ease-in, opacity 1s";
+    c.style.transform = "translateY(-200px) scale(0.8)";
+    c.style.opacity = 0;
+
+    setTimeout(() => {
+        c.style.transition = "";
+        c.style.transform = "";
+        c.style.opacity = 1;
+    }, 1200);
+});
+
+
+const citizen2 = document.getElementById("citizen2");
+
+citizen2.addEventListener("click", () => {
+  const popup = document.createElement("div");
+  popup.textContent = "나를 좀 멈춰줘~~";
+  popup.style.cssText = "position:fixed; left:50%; top:50%; transform:translate(-50%, -50%); background:#000; color:#fff; padding:10px 20px; border-radius:10px; z-index:9999;";
+  document.body.appendChild(popup);
+
+  setTimeout(() => popup.remove(), 2000); // 2초 후 자동 제거
+});
+
+
+const miku1 = document.getElementById("miku1");
+const sound = new Audio("nani.mp3");
+
+miku1.addEventListener("click", () => {
+  sound.play();
+  
+  // 기존 애니메이션 초기화 후 재실행
+  miku1.style.animation = "none";
+  miku1.offsetHeight; // reflow 강제
+  miku1.style.animation = "shake 0.3s";
+});
+
+const haduri = document.getElementById("HaduriCam");
+
+haduri.addEventListener("click", async () => {
+  const popup = document.createElement("div");
+  popup.className = "cam-popup";
+
+  // 닫기 버튼
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "cam-close";
+  closeBtn.innerText = "X";
+  closeBtn.onclick = () => {
+    if(video.srcObject){
+      video.srcObject.getTracks().forEach(track => track.stop());
+    }
+    popup.remove();
+  };
+  popup.appendChild(closeBtn);
+
+  // 제목 이미지
+  const titleImg = document.createElement("img");
+  titleImg.className = "cam-title";
+  titleImg.src = "https://i.imgur.com/vFQKC0G.png"; // 여기에 제목 이미지 주소
+  popup.appendChild(titleImg);
+
+  // 비디오
+  const video = document.createElement("video");
+  video.className = "cam-video";
+  video.autoplay = true;
+  popup.appendChild(video);
+
+  // 노이즈
+  const noise = document.createElement("div");
+  noise.className = "cam-noise";
+  popup.appendChild(noise);
+
+  document.body.appendChild(popup);
+
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video:true, audio:false });
+    video.srcObject = stream;
+  } catch(err) {
+    alert("웹캠 권한이 필요합니다.");
+    popup.remove();
+  }
+});
+/* 2 효과 */
+const kinder = document.getElementById('Kinder');
+
+  kinder.addEventListener('click', () => {
+    kinder.style.left = '3000px'; // 오른쪽으로 이동
+  });
+
+
+const ID = document.getElementById("ID");
+
+ID.addEventListener("click", () => {
+  // 클릭 시 무섭게 붉은 공포 느낌
+  ID.style.filter = "brightness(0.3) contrast(1.5) saturate(3) hue-rotate(-10deg)";
+  ID.style.opacity = "0.85";
+
+  // 클릭 시점에서 오디오 객체 생성 → 재생 허용됨
+  const sound = new Audio("girl.mp3");
+  sound.play().catch(err => console.log("오디오 재생 차단됨:", err));
+
+  setTimeout(() => {
+    ID.style.filter = "";
+    ID.style.opacity = "1";
+  }, 1000);
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  const el = document.getElementById("icon3");
+
+  // 깨지는 효과 함수
+  const shatter = (el) => {
+    el.style.transition = "filter 0.3s ease, transform 0.3s ease";
+    el.style.filter = "blur(6px) contrast(2)";
+    el.style.transform = "scale(1.5) rotate(20deg)";
+    setTimeout(() => {
+      el.style.transition = "";
+      el.style.filter = "";
+      el.style.transform = "";
+    }, 400);
+  };
+
+  // 클릭 이벤트 연결
+  el.addEventListener("click", () => {
+    shatter(el);
+  });
+});
+
+
+
+
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  const ids = ["computer1","computer2"]; // 메시지 효과 적용할 ID 리스트
+
+  ids.forEach(id=>{
+    const el = document.getElementById(id);
+    if(!el) return;
+
+    el.addEventListener("click", (e) => {
+      for(let i=0;i<3;i++){
+        const msg = document.createElement("div");
+        msg.textContent = "졸전 중... 건들지마 나도 날 몰라";
+        msg.style.position = "absolute";
+        msg.style.left = e.pageX + (Math.random()*20-10) + "px";
+        msg.style.top  = e.pageY - 20 + (Math.random()*10-5) + "px";
+        msg.style.fontSize = 12 + Math.random()*6 + "px";
+        msg.style.color = `hsl(${Math.random()*360},100%,60%)`;
+        msg.style.pointerEvents = "none";
+        msg.style.transition = "transform 1.2s ease, opacity 1.2s ease";
+        msg.style.zIndex = 99999;
+
+        document.body.appendChild(msg);
+
+        setTimeout(()=>{
+          msg.style.transform = "translateY(-20px)";
+          msg.style.opacity = 0;
+        }, 10);
+
+        setTimeout(()=>msg.remove(), 1200);
+      }
+    });
+  });
+});
+
+
+
+
+/* 5 효과 */
+  const green = document.getElementById('green');
+
+  green.addEventListener('click', () => {
+    green.style.left = '-1000px'; // 왼쪽으로 이동
+  });
+</script>
+</body>
+</html>
+
+
